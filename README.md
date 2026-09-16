@@ -62,26 +62,21 @@ Choose RAM from vendors that do not use serial numbers, such as **Corsair**.
 
 1. **Spoof the mainboard.**
 
-2. **Spoof the disk and restore the Windows ghost image** (you can use **Macrium Reflect**).
-
-   If you need to reset Windows to a fresh-install state while keeping all the drivers from the ghost image, open CMD as Administrator and run:
-
-   ```cmd
-   C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /reboot
-   ```
-
-   Remove old user accounts — replace `USERNAME` with the account you want to delete:
-
-   ```cmd
-   net user USERNAME /delete
-   rd /s /q "C:\Users\USERNAME"
-   ```
-
+2. **Spoof the disk**
+ 
 3. **Spoof the monitor.**
 
-   With an **Elgato 4K X** capture card, open **Elgato 4K Capture Utility** as Administrator, go to device settings and choose **Reset default**. Reopen the capture utility, go to the device section, select **custom EDID**, and apply. Reopen the utility again and set the mode to **Internal**. From this point the EDID has been changed.
+   With an **Elgato 4K X** capture card connected, open the **Elgato 4K Capture Utility** and navigate to device settings. Select Reset to default, then go to the Device section, set the EDID mode to **Internal**, and click Apply. Unplug the USB-C cable and plug it back in. Reopen the 4K Capture Utility, select Custom EDID, and click Apply. Unplug and reconnect the USB-C cable once more. At this point, the EDID has been changed.
+  
+4. **Restart Windows and enter the BIOS menu.**
 
-4. **Spoof the TPM.**
+   - Go to **Boot → Secure Boot → Manage Keys → Clear Secure Boot Keys → Install default Secure Boot keys**.
+   - Go to **Advanced** and **disable Wi-Fi** and **disable the Bluetooth device**.
+   - Save and exit. 
+
+5. Reinstall Windows (unplug the network cable during installation).
+
+6. **Spoof the TPM.**
 
    Prepare a bootable Ubuntu USB stick (used to install the OS) and keep it plugged into the PC.
 
@@ -95,14 +90,8 @@ Choose RAM from vendors that do not use serial numbers, such as **Corsair**.
 
    Remove the USB, press Enter, and wait for Windows to boot. Verify all the serials in Windows by right-clicking **serialChecker.bat** and running it as Administrator, then pressing **1** and Enter.
 
-5. **Restart Windows and enter the BIOS menu.**
+7. **Right-click the Windows icon → Device Manager → View → Show hidden devices → Uninstall all hidden devices.**
 
-   - Go to **Boot → Secure Boot → Manage Keys → Clear Secure Boot Keys → Install default Secure Boot keys**.
-   - Go to **Advanced** and **disable Wi-Fi** and **disable the Bluetooth device**.
-   - Save and exit.
-
-6. **Right-click the Windows icon → Device Manager → View → Show hidden devices → Uninstall all hidden devices.**
-
-7. **Install the game and restart the machine.**
+8. **Install the game and restart the machine.**
 
 Congratulations!
